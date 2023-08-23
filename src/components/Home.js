@@ -1,7 +1,20 @@
 import React from "react";
 import "../css/Home.css";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+
 
 function Home() {
+
+    const data = [
+        { name: 'Tháng 1', uv: 4000, pv: 2400, amt: 2400 },
+        { name: 'Tháng 2', uv: 3000, pv: 1398, amt: 2210 },
+        { name: 'Tháng 3', uv: 2000, pv: 9800, amt: 2290 },
+        { name: 'Tháng 4', uv: 2780, pv: 3908, amt: 2000 },
+        { name: 'Tháng 5', uv: 1890, pv: 4800, amt: 2181 },
+        { name: 'Tháng 6', uv: 2390, pv: 3800, amt: 2500 },
+        { name: 'Tháng 7', uv: 3490, pv: 4300, amt: 2100 },
+    ];
+
     return (
         <div className="wrapper">
             <aside id="sidebar">
@@ -114,7 +127,20 @@ function Home() {
                             </div>
                         </div>
                         <div className="row mt-5 border border-danger">
-                            
+                            <div className="row mt-3 d-flex justify-content-between mb-3">
+                                <div className="col-7 border border-danger text-center ml-5"> Biểu đồ
+                                    <LineChart width={600} height={300} data={data}>
+                                        <CartesianGrid strokeDasharray="3 3" />
+                                        <XAxis dataKey="name" />
+                                        <YAxis />
+                                        <Tooltip />
+                                        <Legend />
+                                        <Line type="monotone" dataKey="pv" stroke="#8884d8" />
+                                        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                                    </LineChart>
+                                </div>
+                                <div className="col-4 border border-danger text-center">DASHBOARDS</div>
+                            </div>
                         </div>
                     </div>
                 </main>
